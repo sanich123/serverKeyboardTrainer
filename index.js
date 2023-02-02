@@ -1,15 +1,26 @@
-const http = require('http');
+import express from 'express';
+import mongoose from 'mongoose';
 
-const port = 8000;
-const host = 'localhost';
+const DB_URL = 'mongodb+srv://sanich123:17011987@backend-base.0mm68j9.mongodb.net/?retryWrites=true&w=majority';
 
-const requestListener = function(req, res) {
-    res.writeHead(200);
-    res.end('This is my first server!')
+const PORT = 3000;
+
+const app = express();
+app.use(express.json());
+app.post('/', (req, res) => {
+    console.log(req.body);
+    res.status(200).json('Сервер работает tot ')
+});
+async function startApp() {
+    try {
+        await mongoose.connect(DB_URL);
+        app.listen(PORT, () => {
+            console.log(`The server is running on the ${PORT} port`)
+        })
+    } catch (e) {
+        console.log(e);
+    }
 }
 
-const server = http.createServer(requestListener);
+startApp();
 
-server.listen(port, host,  () => {
-    console.log(`Server is listening on the ${host}${port}`)
-});
