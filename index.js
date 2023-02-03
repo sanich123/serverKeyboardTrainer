@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 // import Post from './Post.js';
-import {router} from './router.js';
+import router from './router.js';
 mongoose.set('strictQuery', true);
 
 const DB_URL = 'mongodb+srv://sanich123:17011987@backend-base.0mm68j9.mongodb.net/?retryWrites=true&w=majority';
