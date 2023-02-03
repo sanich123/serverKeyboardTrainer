@@ -1,11 +1,14 @@
 import mongoose from "mongoose";
 import express from 'express';
 import router from "../router/router.js";
+import cors from 'cors';
 import { DB_URL, PORT } from "./const.js";
 
 mongoose.set("strictQuery", true);
 
+
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use('/', router);
 
