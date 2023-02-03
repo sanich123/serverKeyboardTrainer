@@ -1,4 +1,3 @@
-import PostController from "../controller/PostController.js";
 import Post from "../scheme/Post.js";
 
 class PostService {
