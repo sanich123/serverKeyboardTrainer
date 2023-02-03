@@ -1,0 +1,6 @@
+{
+  "extends": ["htmlacademy/node"],
+  "rules": {
+  },
+  "sourceType": "module"
+}
