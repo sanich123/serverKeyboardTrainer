@@ -6,11 +6,11 @@ mongoose.set('strictQuery', true);
 
 const DB_URL = 'mongodb+srv://sanich123:17011987@backend-base.0mm68j9.mongodb.net/?retryWrites=true&w=majority';
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.json());
-app.use('/api', router)
+app.use('/api', router);
 app.post('/', async (req, res) => {
     try {
         const { author, title, content, picture } = req.body;
@@ -20,6 +20,10 @@ app.post('/', async (req, res) => {
         res.status(500).json(e);
     }
 
+});
+
+app.get('/', async (req, res) => {
+    res.json({user: 'sanich123'})
 });
 async function startApp() {
     try {
