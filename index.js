@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import Post from './Post.js';
+// import Post from './Post.js';
 import {router} from './router.js';
 mongoose.set('strictQuery', true);
 
@@ -11,16 +11,16 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(express.json());
 app.use('/api', router);
-app.post('/', async (req, res) => {
-    try {
-        const { author, title, content, picture } = req.body;
-        const post = await Post.create({ author, title, content, picture });
-        res.json(post);
-    } catch (e) {
-        res.status(500).json(e);
-    }
+// app.post('/', async (req, res) => {
+//     try {
+//         const { author, title, content, picture } = req.body;
+//         const post = await Post.create({ author, title, content, picture });
+//         res.json(post);
+//     } catch (e) {
+//         res.status(500).json(e);
+//     }
 
-});
+// });
 
 app.get('/', async (req, res) => {
     res.json({user: 'sanich123'})
