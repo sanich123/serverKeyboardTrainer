@@ -23,8 +23,10 @@
     "cors": "^2.8.5",
     "eslint": "^8.33.0",
     "eslint-config-htmlacademy": "^9.0.0",
+    "express-fileupload": "^1.4.0",
     "mongoose": "^6.9.0",
     "nodemon": "^2.0.20",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "uuid": "^9.0.0"
   }
 }

@@ -25,9 +25,7 @@ class PostController {
       const { params } = req;
       const { id } = params;
       if (!id) {
-        res
-          .status(400)
-          .json({ message: ERR_MSG });
+        res.status(400).json({ message: ERR_MSG });
       }
       const post = await PostService.getOne(id);
       return res.json(post);
@@ -44,8 +42,7 @@ class PostController {
       }
       const updatedPost = await PostService.updatePost(id, body);
       return res.json(updatedPost);
-    } 
-    catch (e) {
+    } catch (e) {
       res.status(500).json(e);
     }
   }

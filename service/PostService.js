@@ -2,7 +2,7 @@ import Post from "../scheme/Post.js";
 
 class PostService {
   async createPost(post) {
-    return await Post.create(post);
+    return await Post.create(post)
   }
   async getAll() {
     return await Post.find();

@@ -3,12 +3,14 @@ import express from 'express';
 import router from "../router/router.js";
 import cors from 'cors';
 import { DB_URL, PORT } from "./const.js";
+import fileUpload from 'express-fileupload';
 
 mongoose.set("strictQuery", true);
 
 
 const app = express();
 app.use(cors());
+app.use(fileUpload({}))
 app.use(express.json());
 app.use('/', router);
 
