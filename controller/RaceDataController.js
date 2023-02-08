@@ -33,15 +33,29 @@ class RaceDataController {
       const { files } = req;
       const { picture } = files;
       const fileName = FileService.saveFile(picture);
-      const image = await Image.create({picture: fileName});
-      return res.json(image);
+      const image = await Image.create({ picture: fileName });
+      console.log(image);
+      res.json(fileName);
     } catch (error) {
       res.status(500).json(ERR_MSG);
     }
   }
   async getPictures(req, res) {
-    const images = await Image.find();
-    res.json(images);
+    try {
+      const images = await Image.find();
+      res.json(images);
+    } catch (error) {
+      res.status(500).json(ERR_MSG);
+    }
+  }
+  async deletePictures(req, res) {
+    try {
+      await Image.deleteMany({});
+      const images = await Image.find();
+      res.json(images);
+    } catch (error) {
+      res.status(500).json(ERR_MSG);
+    }
   }
 }
 

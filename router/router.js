@@ -7,6 +7,7 @@ router.post('/race', RaceDataController.create);
 router.get('/races/:name', RaceDataController.getAllRaces);
 router.post('/picture', RaceDataController.createPicture);
 router.get('/pictures', RaceDataController.getPictures);
+router.delete('/pictures', RaceDataController.deletePictures);
 router.post('/posts', PostController.create);
 router.get('/posts', PostController.getAll);
 router.get('/posts/:id', PostController.getOne);
