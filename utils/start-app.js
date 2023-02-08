@@ -7,7 +7,6 @@ import fileUpload from 'express-fileupload';
 
 mongoose.set("strictQuery", true);
 
-
 const app = express();
 app.use(cors());
 app.use(fileUpload())
