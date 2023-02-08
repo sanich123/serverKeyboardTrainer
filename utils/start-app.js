@@ -9,7 +9,8 @@ mongoose.set("strictQuery", true);
 
 const app = express();
 app.use(cors());
-app.use(fileUpload())
+app.use(fileUpload());
+app.use(express.static('static'))
 app.use(express.json());
 app.use('/', router);
 

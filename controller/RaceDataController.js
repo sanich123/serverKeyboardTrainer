@@ -1,12 +1,14 @@
 import RaceData from "../scheme/RaceData.js";
+import RaceDataService from "../service/RaceDataService.js";
 import { ERR_MSG } from "../utils/const.js";
-import { getAverageMistakes, getAverageSpeed } from "../utils/utils.js";
+import FileService from "../service/FileService.js";
+import Image from "../scheme/Image.js";
 
 class RaceDataController {
   async create(req, res) {
     try {
       const { body } = req;
-      const raceData = await RaceData.create(body);
+      const raceData = await RaceDataService.createRaceData(body);
       res.json(raceData);
     } catch (error) {
       res.status(500).json(e);
@@ -17,25 +19,22 @@ class RaceDataController {
     try {
       const { params } = req;
       const { name } = params;
-      const allRaces = await RaceData.find(params).sort({ date: 1 });
-      const averageMistakes = getAverageMistakes(allRaces);
-      const averageSpeed = getAverageSpeed(allRaces);
-      let lastTenRaces;
-      if (allRaces.length > 10) {
-        lastTenRaces = allRaces.slice(allRaces.length - 10);
-      } else {
-        lastTenRaces = allRaces;
-      }
-      const firstRace = allRaces[0].date;
-
-      res.json({
-        name,
-        averageSpeed,
-        averageMistakes,
-        amountOfRaces: allRaces.length,
-        firstRace,
-        lastTenRaces,
-      });
+      const statisticData = await RaceDataService.getAverageValues(
+        params,
+        name
+      );
+      res.json(statisticData);
+    } catch (error) {
+      res.status(500).json(ERR_MSG);
+    }
+  }
+  async createPicture(req, res) {
+    try {
+      const { files } = req;
+      const { picture } = files;
+      const fileName = FileService.saveFile(picture);
+      const image = await Image.create({picture: fileName});
+      return res.json(image);
     } catch (error) {
       res.status(500).json(ERR_MSG);
     }
