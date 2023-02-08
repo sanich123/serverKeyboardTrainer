@@ -1,5 +1,6 @@
 import RaceData from "../scheme/RaceData.js";
 import { ERR_MSG } from "../utils/const.js";
+import { getAverageMistakes, getAverageSpeed } from "../utils/utils.js";
 
 class RaceDataController {
   async create(req, res) {
@@ -17,14 +18,8 @@ class RaceDataController {
       const { params } = req;
       const { name } = params;
       const allRaces = await RaceData.find(params).sort({ date: 1 });
-      const averageMistakes = (
-        allRaces.reduce((total, { mistakes }) => total + mistakes, 0) /
-        allRaces.length
-      ).toFixed(5);
-      const averageSpeed = (
-        allRaces.reduce((total, { speed }) => total + speed, 0) /
-        allRaces.length
-      ).toFixed(5);
+      const averageMistakes = getAverageMistakes(allRaces);
+      const averageSpeed = getAverageSpeed(allRaces);
       let lastTenRaces;
       if (allRaces.length > 10) {
         lastTenRaces = allRaces.slice(allRaces.length - 10);
