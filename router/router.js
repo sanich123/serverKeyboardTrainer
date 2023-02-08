@@ -1,8 +1,10 @@
 import { Router } from 'express';
 import PostController from '../controller/PostController.js';
+import RaceDataController from '../controller/RaceDataController.js';
 
 const router = new Router();
-
+router.post('/race', RaceDataController.create);
+router.get('/races/:name', RaceDataController.getAllRaces);
 router.post('/posts', PostController.create);
 router.get('/posts', PostController.getAll);
 router.get('/posts/:id', PostController.getOne);
