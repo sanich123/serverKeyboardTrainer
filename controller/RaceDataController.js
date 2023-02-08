@@ -39,6 +39,10 @@ class RaceDataController {
       res.status(500).json(ERR_MSG);
     }
   }
+  async getPictures(req, res) {
+    const images = await Image.find();
+    res.json(images);
+  }
 }
 
 export default new RaceDataController();
