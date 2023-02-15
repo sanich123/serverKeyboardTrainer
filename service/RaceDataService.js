@@ -1,5 +1,5 @@
-const RaceData = require('../scheme/race-data.js');
-const { getAverageMistakes, getAverageSpeed } = require("../utils/utils.js");
+import RaceData from "../scheme/RaceData.js";
+import { getAverageMistakes, getAverageSpeed } from "../utils/utils.js";
 
 class RaceDataService {
   async createRaceData(raceData) {
@@ -27,4 +27,4 @@ class RaceDataService {
   }
 }
 
-module.exports = new RaceDataService();
+export default new RaceDataService();

@@ -1,4 +1,4 @@
-const startAPP = require('./utils/start-app.js');
+import { startApp } from './utils/start-app.js';
 
-startAPP();
+startApp();
 

@@ -1,9 +1,9 @@
-const mongoose = require("mongoose");
-const express = require("express");
-const fileUpload = require("express-fileupload");
-const router = require("../router/router.js");
-const cors = require("cors");
-const { DB_URL, PORT } = require("./const.js");
+import mongoose from "mongoose";
+import express from 'express';
+import router from "../router/router.js";
+import cors from 'cors';
+import { DB_URL, PORT } from "./const.js";
+import fileUpload from 'express-fileupload';
 
 mongoose.set("strictQuery", true);
 
@@ -11,10 +11,11 @@ const app = express();
 app.use(cors());
 app.use(fileUpload());
 app.use(express.static(`static`));
-app.use(express.json());
-app.use("/", router);
 
-async function startApp() {
+app.use(express.json());
+app.use('/', router);
+
+export async function startApp() {
   try {
     await mongoose.connect(DB_URL);
     app.listen(PORT, () =>
@@ -24,5 +25,3 @@ async function startApp() {
     console.log(e);
   }
 }
-
-module.exports = startApp;
