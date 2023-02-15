@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import RaceDataController from '../controller/RaceDataController.js';
+import RaceDataController from '../controller/race-data-controller.js';
 
 const router = new Router();
 router.post('/race', RaceDataController.create);

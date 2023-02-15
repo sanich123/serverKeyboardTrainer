@@ -1,6 +1,6 @@
-import RaceDataService from "../service/RaceDataService.js";
+import RaceDataService from "../service/race-data-service.js";
 import { ERR_MSG } from "../utils/const.js";
-import FileService from "../service/FileService.js";
+import FileService from "../service/file-service.js";
 import Image from "../scheme/Image.js";
 
 class RaceDataController {
