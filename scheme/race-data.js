@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const RaceData = new mongoose.Schema({
   name: { type: String, required: true },
@@ -7,4 +7,4 @@ const RaceData = new mongoose.Schema({
   mistakes: { type: Number, required: true },
 });
 
-export default mongoose.model("RaceData", RaceData);
+module.exports = mongoose.model("RaceData", RaceData);

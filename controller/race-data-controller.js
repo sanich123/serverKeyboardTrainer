@@ -1,8 +1,7 @@
-import RaceData from "../scheme/RaceData.js";
-import RaceDataService from "../service/RaceDataService.js";
-import { ERR_MSG } from "../utils/const.js";
-import FileService from "../service/FileService.js";
-import Image from "../scheme/Image.js";
+const RaceDataService = require("../service/race-data-service.js");
+const ERR_MSG = require('../utils/const.js');
+const FileService = require('../service/file-service.js');
+const Image = require('../scheme/image.js');
 
 class RaceDataController {
   async create(req, res) {
@@ -14,15 +13,11 @@ class RaceDataController {
       res.status(500).json(e);
     }
   }
-
   async getAllRaces(req, res) {
     try {
       const { params } = req;
       const { name } = params;
-      const statisticData = await RaceDataService.getAverageValues(
-        params,
-        name
-      );
+      const statisticData = await RaceDataService.getAverageValues(params, name);
       res.json(statisticData);
     } catch (error) {
       res.status(500).json(ERR_MSG);
@@ -30,12 +25,13 @@ class RaceDataController {
   }
   async createPicture(req, res) {
     try {
+      console.log(req.body, req.files)
       const { files } = req;
       const { picture } = files;
+      
       const fileName = FileService.saveFile(picture);
       const image = await Image.create({ picture: fileName });
-      console.log(image);
-      res.json(fileName);
+      res.json(image);
     } catch (error) {
       res.status(500).json(ERR_MSG);
     }
@@ -59,4 +55,4 @@ class RaceDataController {
   }
 }
 
-export default new RaceDataController();
+module.exports = new RaceDataController();
