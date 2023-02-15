@@ -33,8 +33,7 @@ class RaceDataController {
       const { picture } = files;
       const fileName = FileService.saveFile(picture);
       const image = await Image.create({ picture: fileName });
-      console.log(image);
-      res.json(fileName);
+      res.json(image);
     } catch (error) {
       res.status(500).json(ERR_MSG);
     }
