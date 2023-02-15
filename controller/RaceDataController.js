@@ -1,8 +1,8 @@
-import RaceData from "../scheme/race-data.js";
-import RaceDataService from "../service/race-data-service.js";
+import RaceData from "../scheme/RaceData.js";
+import RaceDataService from "../service/RaceDataService.js";
 import { ERR_MSG } from "../utils/const.js";
-import FileService from "../service/file-service.js";
-import Image from "../scheme/image.js";
+import FileService from "../service/FileService.js";
+import Image from "../scheme/Image.js";
 
 class RaceDataController {
   async create(req, res) {

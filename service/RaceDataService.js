@@ -1,4 +1,4 @@
-import RaceData from "../scheme/race-data.js";
+import RaceData from "../scheme/RaceData.js";
 import { getAverageMistakes, getAverageSpeed } from "../utils/utils.js";
 
 class RaceDataService {
