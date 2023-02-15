@@ -1,4 +1,3 @@
-import RaceData from "../scheme/RaceData.js";
 import RaceDataService from "../service/RaceDataService.js";
 import { ERR_MSG } from "../utils/const.js";
 import FileService from "../service/FileService.js";
