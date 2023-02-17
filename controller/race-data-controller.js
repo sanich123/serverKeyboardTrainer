@@ -10,7 +10,7 @@ class RaceDataController {
       const raceData = await RaceDataService.createRaceData(body);
       res.json(raceData);
     } catch (error) {
-      res.status(500).json(e);
+      res.status(500).json(error);
     }
   }
 
