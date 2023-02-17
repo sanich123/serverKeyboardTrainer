@@ -1,5 +1,5 @@
 import RaceDataService from "../service/race-data-service.js";
-import { ERR_MSG } from "../utils/const.js";
+import { DATA_BASE, DATE_ERR, ERR_MSG, MISTAKES_ERR, NAME_ERR, SPEED_ERR, VALID_REQUEST } from "../utils/const.js";
 import FileService from "../service/file-service.js";
 import Image from "../scheme/Image.js";
 
@@ -7,7 +7,15 @@ class RaceDataController {
   async create(req, res) {
     try {
       const { body } = req;
+      const { name, date, mistakes, speed } = body;
+      if (!name) return res.status(400).json(NAME_ERR);
+      if (!speed) return res.status(400).json(SPEED_ERR);
+      if (mistakes === '') return res.status(400).json(MISTAKES_ERR);
+      if (isNaN(Date.parse(date))) return res.status(400).json(DATE_ERR); 
       const raceData = await RaceDataService.createRaceData(body);
+      if (!raceData) {
+        return res.status(500).json(DATA_BASE)
+      }
       res.json(raceData);
     } catch (error) {
       res.status(500).json(error);

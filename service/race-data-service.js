@@ -3,7 +3,11 @@ import { getAverageMistakes, getAverageSpeed } from "../utils/utils.js";
 
 class RaceDataService {
   async createRaceData(raceData) {
-    return await RaceData.create(raceData);
+    try {
+      return await RaceData.create(raceData);
+    } catch (err) {
+      return err.toString();
+    }
   }
   async getAverageValues(params, name) {
     const allRaces = await RaceData.find(params).sort({ date: 1 });
