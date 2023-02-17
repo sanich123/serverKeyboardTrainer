@@ -9,7 +9,7 @@ You can
  In your Postman you can try these routes: 
  
   1. Route: **/races/:name**, Method: **GET**
-_  It'll return statistic data of user, whose user-data you sent earlier. If there are not data, it'll return error message._
+_It'll return statistic data of user, whose user-data you sent earlier. If there are not data, it'll return error message._
   
   - On deployed version: https://server-keyboard-trainer.vercel.app/races/:name
   - On local version: http://localhost:3000/races/:name
@@ -19,7 +19,7 @@ _  It'll return statistic data of user, whose user-data you sent earlier. If the
   
   2. Route: **/race**, Method: **POST**, body: **{name: string, speed: number, mistakes: number, date: string}** in JSON. All the properties are required.
   
-_  On that route you can post some user-data to the server, and it'll be written to the data-base._
+_On that route you can post some user-data to the server, and it'll be written to the data-base._
   
   - On deployed version: https://server-keyboard-trainer.vercel.app/race
   - On local version: http://localhost:3000/race
