@@ -11,3 +11,4 @@ export function getAverageSpeed(raceData) {
         raceData.length
       ).toFixed(5);
 }
+
